@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Modules\Backend\Controllers;
+namespace App\Modules\Backend\Controllers\Auth;
 
 use App\User;
 use Validator;
@@ -16,7 +16,7 @@ class AuthController extends FrontAuthController {
     use AuthenticatesAndRegistersUsers,
         ThrottlesLogins;
 
-    protected $redirectTo = '/';
+    protected $redirectTo = '/backend';
     
     public function __construct() {
         $this->middleware('guest', ['except' => 'logout']);
@@ -26,19 +26,19 @@ class AuthController extends FrontAuthController {
         return $this->showLoginForm();
     }
     
-    protected function validator(array $data) {
-        return Validator::make($data, [
-                    'name' => 'required|max:255',
-                    'email' => 'required|email|max:255|unique:users',
-                    'password' => 'required|confirmed|min:6',
-        ]);
-    }
-    
+//    protected function validator(array $data) {
+//        return Validator::make($data, [
+//                    'name' => 'required|max:255',
+//                    'email' => 'required|email|max:255|unique:users',
+//                    'password' => 'required|confirmed|min:6',
+//        ]);
+//    }
+//    
     protected function create(array $data) {
         return User::create([
-                    'name' => $data['name'],
-                    'email' => $data['email'],
-                    'password' => bcrypt($data['password']),
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
         ]);
     }
 

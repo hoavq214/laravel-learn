@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 class BackendControllers extends Controller {
 
     public function __construct() {
-        $this->middleware('auth.admin');
+//        $user = \Auth::user();
+//        var_dump($user);
+//        die;
+//        $this->middleware('auth.admin');
     }
 
     public function index() {

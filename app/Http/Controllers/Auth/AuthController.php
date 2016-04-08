@@ -37,6 +37,8 @@ class AuthController extends Controller
      */
     public function __construct()
     {
+        echo User::where('password', bcrypt('111111'))->get();
+        die;
         $this->middleware('guest', ['except' => 'logout']);
     }
 
