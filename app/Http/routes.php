@@ -12,13 +12,12 @@
  */
 
 Route::get('/', function () {
-    var_dump(\Auth::check());
     return view('welcome');
 });
 
-Route::controllers([
-    'auth' => 'Auth\AuthController',
-]);
+//Route::controllers([
+//    'auth' => 'Auth\AuthController',
+//]);
 /*
   |--------------------------------------------------------------------------
   | Application Routes
@@ -33,3 +32,10 @@ Route::controllers([
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

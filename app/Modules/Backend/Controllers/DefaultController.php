@@ -6,9 +6,9 @@ class DefaultController extends BackendControllers {
 
     public function __construct() {
         parent::__construct();
-//        $this->middleware('auth.admin', [
-//            'except' => ['index']
-//        ]);
+        $this->middleware('auth', [
+            'except' => ['index']
+        ]);
     }
 
     public function index() {

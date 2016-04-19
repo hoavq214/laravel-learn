@@ -5,11 +5,11 @@ Route::group([
     'prefix' => 'backend'
         ], function () {
     
-    Route::controllers([
-        'auth' => 'App\Modules\Backend\Controllers\Auth\AuthController',
-    ]);
+//    Route::controllers([
+//        'auth' => 'App\Http\Controllers\Auth\AuthController',
+//    ]);
 
-    Route::group(['middleware' => 'auth.admin'], function() {
+    Route::group(['middleware' => 'auth'], function() {
         Route::get('/', [
             'as' => 'home',
             'uses' => 'App\Modules\Backend\Controllers\DefaultController@index'
